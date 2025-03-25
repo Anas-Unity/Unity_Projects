@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    //public Text gameScoreText;
-    int gameScore;
+    public Text gameScoreText, gameEndScoreText;
+    int gameScore = 0;
     public float speed = 20;  //by default variables are private but we can make them public to show them in unity inspector to change value
     public float turnSpeed, horizontalMovement, verticalMovement, jumpMovementForce, jumpInput;
 
     public Rigidbody playerRB;
-    public bool isGrounded, gameOver = false; 
+    public bool isGrounded, gameOver;
+
+    public GameObject startBtn, gameEndCanvas, restartGame;
 
 /*
  float turnSpeed variable is used to provide speed to our object in horizontal axis
@@ -61,6 +64,8 @@ public class PlayerMovementController : MonoBehaviour
 
                  */
             }
+
+
         } 
     }
 
@@ -98,19 +103,39 @@ public class PlayerMovementController : MonoBehaviour
         if (triggerObject.gameObject.tag == "Coin")
         {
             gameScore++;
-            Debug.Log("Score: " + gameScore);
+            //Debug.Log("Score: " + gameScore);
             //Debug.Log("Triggered with Coin");        //this function is used to show output on unity console
             Destroy(triggerObject.gameObject);       // this function is used to distroy gameObjects
 
-            
+            gameScoreText.text = "Score: "+gameScore.ToString();
+
         }
         else if (triggerObject.gameObject.tag == "Hurdle")
         {
             Debug.Log("Triggered with Hurdle");        //this function is used to show output on unity console
-            gameOver = true;
+            EndGame();
             //gameScoreText.text = "SCORE: " + gameScore;
         }
 
     }
+
+    public void StartGame()
+    {
+        startBtn.SetActive(false);
+
+        gameOver = false;
+    }
+    public void EndGame()
+    {
+
+        gameOver = true;
+        gameEndScoreText.text = "Score: " + gameScore.ToString();
+        gameEndCanvas.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }
-// task create path and place coins & hurdles on it and show score by collecting coins and stop game when collide with hurdle
