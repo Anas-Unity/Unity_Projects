@@ -7,7 +7,7 @@ public class PlayerMovementController : MonoBehaviour
 {
     public Text gameScoreText, gameEndScoreText;
     int gameScore = 0;
-    public float speed = 20;  //by default variables are private but we can make them public to show them in unity inspector to change value
+    public float playerSpeed = 5, playerMaxSpeed = 15;  //by default variables are private but we can make them public to show them in unity inspector to change value
     public float turnSpeed, horizontalMovement, verticalMovement, jumpMovementForce, jumpInput;
 
     public Rigidbody playerRB;
@@ -43,6 +43,11 @@ public class PlayerMovementController : MonoBehaviour
             verticalMovement = Input.GetAxis("Vertical"); // this is used to move object in horizontal axis
             jumpMovementForce = Input.GetAxis("Jump");  //this is used to allow jumping to our object
 
+            if(playerSpeed < playerMaxSpeed)
+            {
+                playerSpeed += 0.3f * Time.deltaTime;
+            }
+
 
             //transform.Translate(new Vector3(0,0,1)*Time.deltaTime*speed);  //working with new vector3 values as hardcoded
             //transform.Translate(movement*Time.deltaTime*speed);  //working with vector3 varible
@@ -50,7 +55,8 @@ public class PlayerMovementController : MonoBehaviour
             //transform.Translate(Vector3.right*Time.deltaTime*speed);  //working with vector3.right function which works in moving right
             //transform.Translate(Vector3.up*Time.deltaTime*speed);  //working with vector3.up function which works in moving upward
 
-            transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalMovement);      //working with vector3.forward function which works in moving forward
+            //transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalMovement);      //working with vector3.forward function which works in moving forward
+            transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed);      //working with vector3.forward function which works in moving forward
             transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalMovement);      //working with vector3.right function which works in moving right
 
             if (jumpMovementForce > 0 && isGrounded)
