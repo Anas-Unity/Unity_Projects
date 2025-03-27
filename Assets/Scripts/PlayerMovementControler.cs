@@ -108,12 +108,17 @@ public class PlayerMovementController : MonoBehaviour
 
         if (triggerObject.gameObject.tag == "Coin")
         {
+
+            PlayerPrefs.SetInt("highScore", gameScore);  //playerprefs is used to store temporary data
+            int highScore = PlayerPrefs.GetInt("highScore", 0); //show highest score
+            
+
             gameScore++;
             //Debug.Log("Score: " + gameScore);
             //Debug.Log("Triggered with Coin");        //this function is used to show output on unity console
             Destroy(triggerObject.gameObject);       // this function is used to distroy gameObjects
 
-            gameScoreText.text = "Score: "+gameScore.ToString();
+            gameScoreText.text = gameScore.ToString();
 
         }
         else if (triggerObject.gameObject.tag == "Hurdle")
@@ -145,3 +150,4 @@ public class PlayerMovementController : MonoBehaviour
     }
 
 }
+//  task 1) show highest score , 2) manage canvas in different aspect ratios , 3) create prefab
