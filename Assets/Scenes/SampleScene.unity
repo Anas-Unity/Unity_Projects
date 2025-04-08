@@ -942,7 +942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9872731, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.5058824, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -951,18 +951,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 5
-    m_MaxSize: 60
+    m_MaxSize: 45
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: High
+  m_Text: 'High Score: 0'
 --- !u!222 &425022629
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1737,7 +1737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &722131091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1835,6 +1835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameScoreText: {fileID: 0}
   gameEndScoreText: {fileID: 0}
+  gameHighScoreText: {fileID: 0}
   playerSpeed: 20
   playerMaxSpeed: 0
   turnSpeed: 0
@@ -3683,6 +3684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameScoreText: {fileID: 2003062224}
   gameEndScoreText: {fileID: 739404576}
+  gameHighScoreText: {fileID: 425022628}
   playerSpeed: 4
   playerMaxSpeed: 15
   turnSpeed: 2
@@ -5667,7 +5669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2143407656
 Transform:
   m_ObjectHideFlags: 0

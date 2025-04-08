@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    public Text gameScoreText, gameEndScoreText;
-    int gameScore = 0;
+    public Text gameScoreText, gameEndScoreText, gameHighScoreText;
+    int gameScore = 0, highScore;
     public float playerSpeed = 5, playerMaxSpeed = 15;  //by default variables are private but we can make them public to show them in unity inspector to change value
     public float turnSpeed, horizontalMovement, verticalMovement, jumpMovementForce, jumpInput;
 
@@ -109,8 +109,8 @@ public class PlayerMovementController : MonoBehaviour
         if (triggerObject.gameObject.tag == "Coin")
         {
 
-            PlayerPrefs.SetInt("highScore", gameScore);  //playerprefs is used to store temporary data
-            int highScore = PlayerPrefs.GetInt("highScore", 0); //show highest score
+            //PlayerPrefs.SetInt("highScore", gameScore);  //playerprefs is used to store temporary data
+            //int highScore = PlayerPrefs.GetInt("highScore", 0); //show highest score
             
 
             gameScore++;
@@ -139,15 +139,29 @@ public class PlayerMovementController : MonoBehaviour
     public void EndGame()
     {
 
+        highScore = PlayerPrefs.GetInt("highScore", 0);
+        if (gameScore > highScore)
+        {
+
+            //Debug.Log("game score: "+gameScore);
+            PlayerPrefs.SetInt("highScore", gameScore);
+            highScore = gameScore;
+        }
+        //Debug.Log("high score: "+highScore);
+        gameHighScoreText.text = "High Score: " + highScore.ToString();
+
         gameOver = true;
         gameEndScoreText.text = "Score: " + gameScore.ToString();
         gameEndCanvas.SetActive(true);
+
+
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 
 }
 //  task 1) show highest score , 2) manage canvas in different aspect ratios , 3) create prefab
