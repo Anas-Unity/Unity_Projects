@@ -1833,6 +1833,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a0c44bb8337ac4f93f825e98a1f843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveInputAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2b4cb883-dc06-421e-977f-c45a69cf8ade
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   gameScoreText: {fileID: 0}
   gameEndScoreText: {fileID: 0}
   gameHighScoreText: {fileID: 0}
@@ -3682,6 +3691,95 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a0c44bb8337ac4f93f825e98a1f843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveInputAction:
+    m_Name: Move Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: bf9bf3a7-da0a-4f40-9f79-1b1949e8ecf0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 4cbe8876-9352-434f-bf52-4962fcbbe566
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 2d5c2f8f-029d-49f4-83c0-410081d119c2
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 71540dda-ea14-4339-a74b-29372230b6a9
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 328d3286-ad57-4f12-976c-86560e58b9ab
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: right
+      m_Id: be12a1a6-80cd-4881-a270-6c7c2647b96e
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: 2D Vector
+      m_Id: d4369cea-33c3-4244-b09c-f652f5db2710
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 4
+    - m_Name: up
+      m_Id: eb06a900-92d0-4cea-bec1-8045b8305c52
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 2cab8df5-e4fe-4d3e-ba01-fca9938d3623
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 2d58219e-9961-465f-829c-1c132630e9b1
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: right
+      m_Id: fba07aa7-bb0f-4cb9-b21f-4ca805edc119
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    m_Flags: 0
   gameScoreText: {fileID: 2003062224}
   gameEndScoreText: {fileID: 739404576}
   gameHighScoreText: {fileID: 425022628}
