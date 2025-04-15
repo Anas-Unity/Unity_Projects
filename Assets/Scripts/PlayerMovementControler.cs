@@ -10,6 +10,10 @@ public class PlayerMovementController : MonoBehaviour
     public InputAction moveInputAction;
     Vector2 moveDirection;
 
+    public InputSystem_Actions moveActions;
+    InputAction move2DAxis;
+
+
     public Text gameScoreText, gameEndScoreText, gameHighScoreText;
     int gameScore = 0, highScore;
     public float playerSpeed = 5, playerMaxSpeed = 15;  //by default variables are private but we can make them public to show them in unity inspector to change value
@@ -20,12 +24,25 @@ public class PlayerMovementController : MonoBehaviour
 
     public GameObject startBtn, gameEndCanvas, restartGame;
 
-/*
- float turnSpeed variable is used to provide speed to our object in horizontal axis
- float horizontalMovement variable is used to move our object in horizntal axis " left, right "
- float verticalMovement variable is used to move our object in vertical axis    " front, back "
- */
+    /*
+     float turnSpeed variable is used to provide speed to our object in horizontal axis
+     float horizontalMovement variable is used to move our object in horizntal axis " left, right "
+     float verticalMovement variable is used to move our object in vertical axis    " front, back "
+     */
 
+
+    private void OnEnable()
+    {
+        moveActions = new InputSystem_Actions();
+        move2DAxis = moveActions.Player.Move;
+        move2DAxis.Enable();
+        moveInputAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        moveInputAction.Disable();
+    }
 
 
     //we have different data types in unity
@@ -64,7 +81,9 @@ public class PlayerMovementController : MonoBehaviour
             //transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed);      //working with vector3.forward function which works in moving forward
             //transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalMovement);      //working with vector3.right function which works in moving right
 
-            moveDirection = moveInputAction.ReadValue<Vector2>();
+            moveDirection = move2DAxis.ReadValue<Vector2>();
+            //moveDirection = moveInputAction.ReadValue<Vector2>();
+            //transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed*moveDirection.y);
             transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed);
             transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * moveDirection.x);
 
@@ -85,15 +104,7 @@ public class PlayerMovementController : MonoBehaviour
         } 
     }
 
-    private void OnEnable()
-    {
-        moveInputAction.Enable();
-    }
-
-    private void OnDisable()
-    {
-        moveInputAction.Disable();
-    }
+   
 
     private void OnCollisionEnter(Collision colliderObject)    // this function is checking if the object is in collision 
     {
